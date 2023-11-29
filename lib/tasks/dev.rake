@@ -10,12 +10,13 @@ if Rails.env.development?
       include FactoryBot::Syntax::Methods
       include ActionView::Helpers::TextHelper
 
+      Company.find_or_create_by(name: "Culture Amp")
+
       users.each do |user_attrs|
         Person.where(user_attrs).first_or_create
       end
 
       nat = Person.find_by(email: "nat@example.com")
-      laura = Person.find_by(email: "laura@example.com")
 
       post = Post.create(
         person: nat,
@@ -23,9 +24,6 @@ if Rails.env.development?
         body: "Lorem ipsum dolor",
         published_on: 1.day.ago,
       )
-
-      Comment.create(person: laura, post: post, body: "Great!")
-      Comment.create(person: nat, post: post, body: "Thanks Laura")
     end
 
     def users
@@ -54,7 +52,6 @@ if Rails.env.development?
           first_name: "Steve",
           last_name: "Rogers",
           email: "steve@example.com",
-          admin: true,
         },
       ]
     end
