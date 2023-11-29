@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.2"
 # gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "email_validator", "1.6.0"
+gem "good_job"
 gem "haml-rails"
 gem "http"
 gem "importmap-rails"
