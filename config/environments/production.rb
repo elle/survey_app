@@ -1,3 +1,4 @@
+require Rails.root.join("config/smtp")
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
