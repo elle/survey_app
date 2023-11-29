@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Survey
   class Application < Rails::Application
+    config.active_record.schema_format = :sql
+
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
 
