@@ -1,0 +1,19 @@
+%h1
+  = @post.title
+
+- if @post.description
+  %h3 Description
+  %p
+    = @post.description
+
+= @post.body
+
+%p
+  Written by
+  = @post.person.first_name
+
+%p
+  %small
+    - if @post.published_on && @post.published_on <= Date.current
+      Published on
+      = l(@post.published_on, format: :short)
