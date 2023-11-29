@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Set up Rails app.
+# Run this script immediately after cloning the codebase.
+# https://thoughtbot.com/blog/bin-setup
+
+# Set up Ruby dependencies
+bundle install
+
+# Install Homebrew dependencies
+# if [ -x "$(command -v brew)" ]; then
+#   brew bundle
+# fi
+
+yarn install
+
+# Set up database
+# bundle exec rake dev:prime
+bundle exec rails dev:prime
+bundle exec rails log:clear tmp:clear
+
+# Set up configurable environment variables for Foreman
+if [ ! -f .env ]; then
+  cp .env.example .env
+fi
+
+# Remove pre-existing Active Storage uploads
+# rm -rf storage
