@@ -1,3 +1,6 @@
 en:
   flash:
     unauthorised: Unauthorised
+  time:
+    formats:
+      short: "%b %d, %Y"
