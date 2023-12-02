@@ -12,4 +12,9 @@ FactoryBot.define do
     title { "Best heading ever" }
     person
   end
+
+  factory :survey do
+    name { "Engagement survey" }
+    company
+  end
 end

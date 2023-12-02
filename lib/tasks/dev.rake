@@ -10,8 +10,6 @@ if Rails.env.development?
       include FactoryBot::Syntax::Methods
       include ActionView::Helpers::TextHelper
 
-      Company.find_or_create_by(name: "Culture Amp")
-
       users.each do |user_attrs|
         Person.where(user_attrs).first_or_create
       end
@@ -23,6 +21,11 @@ if Rails.env.development?
         title: "TDD with RSpec workshop",
         body: "Lorem ipsum dolor",
         published_on: 1.day.ago,
+      )
+
+      survey = Survey.find_or_create_by(
+        name: "Engagement survey",
+        company: company,
       )
     end
 
@@ -55,5 +58,9 @@ if Rails.env.development?
         },
       ]
     end
+  end
+
+  def company
+    @company ||= Company.find_or_create_by(name: "Culture Amp")
   end
 end
