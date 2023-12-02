@@ -35,32 +35,49 @@ if Rails.env.development?
           first_name: "Clint",
           last_name: "Barton",
           email: "clint@example.com",
+          role: designer,
         },
         {
           first_name: "Laura",
           last_name: "Barton",
           email: "laura@example.com",
+          role: engineer,
         },
         {
           first_name: "Natasha",
           last_name: "Romanoff",
           email: "nat@example.com",
+          role: manager,
         },
         {
           first_name: "Bruce",
           last_name: "Banner",
           email: "banner@example.com",
+          role: engineer,
         },
         {
           first_name: "Steve",
           last_name: "Rogers",
           email: "steve@example.com",
+          role: manager,
         },
       ]
     end
-  end
 
-  def company
-    @company ||= Company.find_or_create_by(name: "Culture Amp")
+    def company
+      @company ||= Company.find_or_create_by(name: "Culture Amp")
+    end
+
+    def designer
+      @designer ||= Role.where(name: "Designer").first
+    end
+
+    def engineer
+      @engineer ||= Role.where(name: "Engineer").first
+    end
+
+    def manager
+      @product_manager ||= Role.where(name: "Manager").first
+    end
   end
 end

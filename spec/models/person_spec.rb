@@ -6,6 +6,7 @@ RSpec.describe Person do
   end
 
   context "associations" do
+    it { is_expected.to belong_to(:role) }
     # has_many posts, dependent
   end
 

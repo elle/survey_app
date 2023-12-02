@@ -1,4 +1,5 @@
 class Person < ApplicationRecord
+  belongs_to :role
   has_many :posts
 
   after_initialize :set_token
