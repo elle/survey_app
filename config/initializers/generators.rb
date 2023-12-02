@@ -8,4 +8,5 @@ Rails.application.config.generators do |generate|
   generate.system_tests = nil
   generate.test_framework :rspec
   generate.view_specs false
+  generate.template_engine :haml
 end
