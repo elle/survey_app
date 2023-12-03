@@ -27,6 +27,7 @@ if Rails.env.development?
       survey = Survey.find_or_create_by(
         name: "Engagement survey",
         company: company,
+        person: nat,
       )
     end
   end

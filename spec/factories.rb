@@ -22,5 +22,6 @@ FactoryBot.define do
   factory :survey do
     name { "Engagement survey" }
     company
+    person
   end
 end

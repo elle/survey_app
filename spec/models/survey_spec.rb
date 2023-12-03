@@ -18,9 +18,28 @@ RSpec.describe Survey do
   describe ".active" do
     it "return active surveys only" do
       company = create(:company)
-      active_survey_1 = company.surveys.create(name: "Active 1", active: true)
-      active_survey_2 = company.surveys.create(name: "Active 2", active: true)
-      _inactive_survey = described_class.create(name: "Inactive", active: false)
+      person = create(:person)
+      active_survey_1 = create(
+        :survey,
+        name: "Active 1",
+        company: company,
+        person: person,
+        active: true,
+      )
+      active_survey_2 = create(
+        :survey,
+        name: "Active 2",
+        company: company,
+        person: person,
+        active: true,
+      )
+      _inactive_survey = create(
+        :survey,
+        name: "Inactive",
+        company: company,
+        person: person,
+        active: false,
+      )
 
       result = described_class.active
 

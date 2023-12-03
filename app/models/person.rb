@@ -1,6 +1,7 @@
 class Person < ApplicationRecord
   belongs_to :role
   has_many :posts
+  has_many :surveys
 
   after_initialize :set_token
 
