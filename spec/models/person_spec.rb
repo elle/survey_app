@@ -28,4 +28,14 @@ RSpec.describe Person do
       end
     end
   end
+
+  describe ".surveys" do
+    it "has many surveys" do
+      alice = create(:person)
+      survey = create(:survey)
+      alice.surveys << survey
+
+      expect(alice.reload.surveys).to include survey
+    end
+  end
 end
