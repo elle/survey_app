@@ -11,4 +11,5 @@ This is a skeleton app for the workshop.
 
 - Clone the repo
 - `cd survey`
+- `rails db:create`
 - `./bin/setup`
