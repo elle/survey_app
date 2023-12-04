@@ -11,9 +11,21 @@ RSpec.describe Person do
   end
 
   describe "#full_name" do
-    # when only first name is present -> returns first_name
-    # when both first and last, returns both
-    # returns a titleized full name
+    context "when both first and last, returns both" do
+      it "returns a titleized full name" do
+        person = Person.new(first_name: "Homer", last_name: "simpson")
+
+        expect(person.full_name).to eq "Homer Simpson"
+      end
+    end
+
+    context "when only first name is present" do
+      it "returns first_name" do
+        person = Person.new(first_name: "homer")
+
+        expect(person.full_name).to eq "Homer"
+      end
+    end
   end
 
   describe "#confirmed?" do
