@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
-  belongs_to :person
+  belongs_to :person, required: true
+
+  validates :title, presence: true
 
   enum status: {
     draft: 0,
@@ -11,6 +13,10 @@ class Post < ApplicationRecord
     rejected: 6,
     archived: 7,
   }
+
+  def self.by_person(person)
+    joins(:person).where(person: person)
+  end
 
   def self.most_recent
     order(created_at: :desc)
