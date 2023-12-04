@@ -14,6 +14,11 @@ FactoryBot.define do
     person
   end
 
+  factory :question do
+    label { "Your name?" }
+    survey
+  end
+
   factory :role do
     name { "Engineer" }
     billable { true }
