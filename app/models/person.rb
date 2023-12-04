@@ -10,6 +10,10 @@ class Person < ApplicationRecord
 
   after_initialize :set_token
 
+  def self.billable
+    joins(:role).merge(Role.billable)
+  end
+
   def confirmed?
     confirmed_at.present?
   end
