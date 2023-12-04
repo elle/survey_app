@@ -2,12 +2,17 @@ require "rails_helper"
 
 RSpec.describe Person do
   context "validations" do
-    # add validations first_name. email, admin
+    subject { build(:person) }
+
+    it { is_expected.to validate_presence_of(:first_name) }
+    it { is_expected.to validate_uniqueness_of(:email) }
   end
 
   context "associations" do
     it { is_expected.to belong_to(:role) }
-    # has_many posts, dependent
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
+    # it { is_expected.to have_many(:comments).dependent(:destroy) }
+    # also add two more.. one for the company_members, and one for company
   end
 
   describe "#full_name" do
@@ -29,8 +34,19 @@ RSpec.describe Person do
   end
 
   describe "#confirmed?" do
-    # when present -> returns true
-    # when nil -> returns false
+    context "when confirmed_at is present" do
+      it "returns true" do
+        person = described_class.new(confirmed_at: Time.current)
+
+        expect(person).to be_confirmed
+      end
+    end
+
+    context "when confirmed_at is nil" do
+      it "return false" do
+        expect(described_class.new).not_to be_confirmed
+      end
+    end
   end
 
   describe "#set_token" do
