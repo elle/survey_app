@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :answer do
+    person
+    question
+    body { "Best answer ever" }
+  end
+
   factory :company do
     name { "Culture Amp" }
   end

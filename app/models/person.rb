@@ -2,6 +2,8 @@ class Person < ApplicationRecord
   belongs_to :role
   has_many :posts, dependent: :destroy
   has_many :surveys, dependent: :destroy
+  has_many :answers
+  has_many :questions, through: :answers
 
   validates :first_name, presence: true
   validates :email, uniqueness: true
