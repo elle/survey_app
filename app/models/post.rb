@@ -15,4 +15,8 @@ class Post < ApplicationRecord
   def self.most_recent
     order(created_at: :desc)
   end
+
+  def self.alphabetical
+    order(title: :asc)
+  end
 end
