@@ -5,6 +5,11 @@ FactoryBot.define do
     body { "My wonderful answer" }
   end
 
+  factory :employee do
+    company
+    person
+  end
+
   factory :company do
     name { "Culture Amp" }
   end
