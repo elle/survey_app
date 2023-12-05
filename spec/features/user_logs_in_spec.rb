@@ -8,25 +8,26 @@ RSpec.feature "user logs in" do
     visit root_path
 
     expect(page).not_to have_text(name)
-    expect(page).not_to have_text "Log out"
+    expect(page).not_to have_text t("application.user_nav.log_out")
 
-    click_on "Log in"
+    click_on t("application.user_nav.log_in")
 
     within "form" do
       fill_in :session_email, with: user.email
-      click_on "Log in"
+      click_on t("sessions.new.log_in")
     end
 
-    expect(page).to have_text("Logged in!")
+    expect(page).to have_text t("sessions.create.notice")
     expect(page).to have_text(name)
-    expect(page).to have_text "Log out"
-    expect(page).not_to have_text "Log in"
+    expect(page).to have_text t("application.user_nav.log_out")
+    expect(page).not_to have_text t("application.user_nav.log_in")
 
-    click_on "Log out"
+    click_on t("application.user_nav.log_out")
+
 
     expect(page).to have_current_path(root_path)
-    expect(page).to have_text("Logged out!")
+    expect(page).to have_text t("sessions.destroy.notice")
     expect(page).not_to have_text(name)
-    expect(page).not_to have_text "Log out"
+    expect(page).not_to have_text t("application.user_nav.log_out")
   end
 end

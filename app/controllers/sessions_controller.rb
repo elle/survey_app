@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
     if person
       session[:person_id] = person.id
-      redirect_to root_path, notice: "Logged in!"
+      redirect_to root_path, notice: t(".notice")
     else
       deny_access
     end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:person_id] = nil
-    redirect_to root_path, notice: "Logged out!"
+    redirect_to root_path, notice: t(".notice")
   end
 
   private

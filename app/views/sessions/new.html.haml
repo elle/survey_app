@@ -1,5 +1,6 @@
-%h1 Log in
+%h1
+  = t(".log_in")
 
 = simple_form_for :session, url: sessions_path do |f|
   = f.input :email
-  = f.submit "Log in"
+  = f.submit t(".log_in")
