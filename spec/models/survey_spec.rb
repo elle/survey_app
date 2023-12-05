@@ -5,11 +5,15 @@ RSpec.describe Survey do
     it { is_expected.to belong_to(:company) }
   end
 
-  # context "validations" do
-  #   subject { build(:survey) }
+  context "validations" do
+    subject { build(:survey) }
 
-  #   it { is_expected.to validate_uniqueness_of(:slug).case_insensitive }
-  # end
+    it do
+      is_expected.to validate_uniqueness_of(:slug)
+        .case_insensitive
+        .scoped_to(:company_id)
+    end
+  end
 
   it "is active by default" do
     expect(described_class.new).to be_active
@@ -47,25 +51,25 @@ RSpec.describe Survey do
     end
   end
 
-  # describe "#generate_slug" do
-  #   context "when provided manually" do
-  #     it "parameterise user's unput" do
-  #       survey = create(
-  #         :survey,
-  #         name: "My Callback",
-  #         slug: "Callbacks are good sometimes",
-  #       )
+  describe "#generate_slug" do
+    context "when provided manually" do
+      it "parameterise user's unput" do
+        survey = create(
+          :survey,
+          name: "My Callback",
+          slug: "Callbacks are good sometimes",
+        )
 
-  #       expect(survey.slug).to eq "callbacks-are-good-sometimes"
-  #     end
-  #   end
+        expect(survey.slug).to eq "callbacks-are-good-sometimes"
+      end
+    end
 
-  #   context "when not provided" do
-  #     it "parameterises survey's name" do
-  #       survey = create(:survey, name: "My Callbacks")
+    context "when not provided" do
+      it "parameterises survey's name" do
+        survey = create(:survey, name: "My Callbacks")
 
-  #       expect(survey.slug).to eq "my-callbacks"
-  #     end
-  #   end
-  # end
+        expect(survey.slug).to eq "my-callbacks"
+      end
+    end
+  end
 end
