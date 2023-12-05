@@ -6,6 +6,10 @@ class Person < ApplicationRecord
 
   after_initialize :set_token
 
+  def self.billable
+    joins(:role).merge(Role.billable)
+  end
+
   def full_name
     [first_name, last_name].compact.join(" ").titleize
   end
