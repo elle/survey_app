@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :answer do
+    person
+    question
+    body { "My wonderful answer" }
+  end
+
   factory :company do
     name { "Culture Amp" }
   end
@@ -12,6 +18,11 @@ FactoryBot.define do
   factory :post do
     title { "Best heading ever" }
     person
+  end
+
+  factory :question do
+    label { "How are you today?" }
+    survey
   end
 
   factory :role do
