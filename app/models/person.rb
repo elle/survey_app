@@ -6,8 +6,14 @@ class Person < ApplicationRecord
 
   after_initialize :set_token
 
+  validates :first_name, presence: true
+
   def self.billable
     joins(:role).merge(Role.billable)
+  end
+
+  def confirmed?
+    confirmed_at.present?
   end
 
   def full_name
