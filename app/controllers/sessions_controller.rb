@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     if person
       session[:person_id] = person.id
       redirect_to root_path, notice: t(".notice")
+    else
+      deny_access
     end
   end
 
