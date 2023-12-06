@@ -1,6 +1,18 @@
 en:
+  application:
+    user_nav:
+      login: Sign in
+      logout: Log out
   flash:
     unauthorised: Unauthorised
+  sessions:
+    create:
+      notice: Logged in!
+    destroy:
+      notice: Logged out!
+    new:
+      login: Log in
   time:
     formats:
       short: "%b %d, %Y"
+

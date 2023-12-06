@@ -1,0 +1,5 @@
+- if current_user
+  = current_user.first_name
+  = link_to t(".logout"), logout_path, method: :delete
+- else
+  = link_to t(".login"), login_path
